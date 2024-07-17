@@ -1,0 +1,280 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script
+      src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js"
+      defer
+      init
+    ></script>
+    <script type="text/javascript">
+      window.tailwind.config = {
+        darkMode: ["class"],
+        theme: {
+          extend: {
+            colors: {
+              border: "hsl(var(--border))",
+              input: "hsl(var(--input))",
+              ring: "hsl(var(--ring))",
+              background: "hsl(var(--background))",
+              foreground: "hsl(var(--foreground))",
+              primary: {
+                DEFAULT: "hsl(var(--primary))",
+                foreground: "hsl(var(--primary-foreground))",
+              },
+              secondary: {
+                DEFAULT: "hsl(var(--secondary))",
+                foreground: "hsl(var(--secondary-foreground))",
+              },
+              destructive: {
+                DEFAULT: "hsl(var(--destructive))",
+                foreground: "hsl(var(--destructive-foreground))",
+              },
+              muted: {
+                DEFAULT: "hsl(var(--muted))",
+                foreground: "hsl(var(--muted-foreground))",
+              },
+              accent: {
+                DEFAULT: "hsl(var(--accent))",
+                foreground: "hsl(var(--accent-foreground))",
+              },
+              popover: {
+                DEFAULT: "hsl(var(--popover))",
+                foreground: "hsl(var(--popover-foreground))",
+              },
+              card: {
+                DEFAULT: "hsl(var(--card))",
+                foreground: "hsl(var(--card-foreground))",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer base {
+        :root {
+          --background: 0 0% 100%;
+          --foreground: 240 10% 3.9%;
+          --card: 0 0% 100%;
+          --card-foreground: 240 10% 3.9%;
+          --popover: 0 0% 100%;
+          --popover-foreground: 240 10% 3.9%;
+          --primary: 240 5.9% 10%;
+          --primary-foreground: 0 0% 98%;
+          --secondary: 240 4.8% 95.9%;
+          --secondary-foreground: 240 5.9% 10%;
+          --muted: 240 4.8% 95.9%;
+          --muted-foreground: 240 3.8% 46.1%;
+          --accent: 240 4.8% 95.9%;
+          --accent-foreground: 240 5.9% 10%;
+          --destructive: 0 84.2% 60.2%;
+          --destructive-foreground: 0 0% 98%;
+          --border: 240 5.9% 90%;
+          --input: 240 5.9% 90%;
+          --ring: 240 5.9% 10%;
+          --radius: 0.5rem;
+        }
+        .dark {
+          --background: 240 10% 3.9%;
+          --foreground: 0 0% 98%;
+          --card: 240 10% 3.9%;
+          --card-foreground: 0 0% 98%;
+          --popover: 240 10% 3.9%;
+          --popover-foreground: 0 0% 98%;
+          --primary: 0 0% 98%;
+          --primary-foreground: 240 5.9% 10%;
+          --secondary: 240 3.7% 15.9%;
+          --secondary-foreground: 0 0% 98%;
+          --muted: 240 3.7% 15.9%;
+          --muted-foreground: 240 5% 64.9%;
+          --accent: 240 3.7% 15.9%;
+          --accent-foreground: 0 0% 98%;
+          --destructive: 0 62.8% 30.6%;
+          --destructive-foreground: 0 0% 98%;
+          --border: 240 3.7% 15.9%;
+          --input: 240 3.7% 15.9%;
+          --ring: 240 4.9% 83.9%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl pt-4"
+    >
+      <div
+        class="bg-blue-500 p-4 rounded-t-lg flex justify-between items-center"
+      >
+        <a href="./invest.html">
+          <button
+            class="bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-600 dark:text-zinc-400 font-medium rounded-lg text-sm px-3 py-2"
+          >
+            <img
+              aria-hidden="true"
+              alt="back-arrow"
+              src="https://img.icons8.com/?size=30&id=40217&format=png&color=000000"
+            />
+          </button>
+        </a>
+        <h2 class="text-white text-center text-xl font-semibold">Invest</h2>
+      </div>
+
+      <div class="p-4">
+        <div class="flex justify-between items-center mb-4">
+          <div>
+            <p class="text-zinc-500">Actually Paid</p>
+            <p class="text-2xl font-semibold text-zinc-800">₹400.00</p>
+          </div>
+          <div>
+            <p class="text-zinc-500">Daily Income</p>
+            <p class="text-2xl font-semibold text-zinc-800">₹140.00</p>
+          </div>
+        </div>
+        <div class="flex justify-between items-center mb-4">
+          <div>
+            <p class="text-zinc-500">Buy Quantity</p>
+            <p id="buy-quantity" class="text-2xl font-semibold text-zinc-800">
+              1
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center mb-4">
+          <p class="text-zinc-500">MIN 1</p>
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value="1"
+            class="mx-4 flex-grow appearance-none h-2 w-full rounded-lg bg-blue-500 bg-opacity-50"
+            id="quantity-slider"
+          />
+          <p class="text-zinc-500">MAX 100</p>
+        </div>
+        <div class="mb-4">
+          <p class="text-zinc-500">Credit available ₹0</p>
+        </div>
+        <button class="w-full bg-blue-500 text-white py-2 rounded-lg">
+          Invest Now
+        </button>
+      </div>
+      <div class="p-4 bg-zinc-100">
+        <h3 class="text-lg font-semibold text-zinc-800">junior plan-New</h3>
+        <div class="flex justify-between items-center mb-2">
+          <p class="text-zinc-500">Each Price</p>
+          <p class="text-lg font-semibold text-zinc-800">₹400.00</p>
+        </div>
+        <div class="flex justify-between items-center mb-2">
+          <p class="text-zinc-500">Revenue</p>
+          <p class="text-lg font-semibold text-zinc-800">30 Day</p>
+        </div>
+        <div class="flex justify-between items-center mb-2">
+          <p class="text-zinc-500">Total Revenue</p>
+          <p class="text-lg font-semibold text-zinc-800">₹4,200.00</p>
+        </div>
+        <div class="flex justify-between items-center mb-2">
+          <p class="text-zinc-500">Need Level</p>
+          <div
+            class="text-blue-500 font-bold text-xl sm:text-2xl md:text-3xl lg:text-4xl"
+          >
+            V1
+          </div>
+        </div>
+        <div class="flex justify-between items-center">
+          <p class="text-zinc-500">Maximum</p>
+          <p class="text-lg font-semibold text-zinc-800">100</p>
+        </div>
+      </div>
+    </div>
+    <!-- Telegram Popup -->
+    <div
+      id="telegramPopup"
+      class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded-lg p-6 z-50"
+      style="max-width: 400px; display: none"
+    >
+      <button
+        class="absolute top-3 right-3 text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-300"
+        onclick="closePopup()"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6"
+          />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 6l12 12"
+          />
+        </svg>
+      </button>
+      <div class="flex items-center mb-4">
+        <img
+          src="https://th.bing.com/th/id/R.856125c6aca3db8a02f309f4eb9fe9ad?rik=YhEI4FnHZJbfJw&riu=http%3a%2f%2fassets.stickpng.com%2fthumbs%2f5842a8fba6515b1e0ad75b03.png&ehk=rRMAIHTvtZrw%2bnhc892BXLEPZ5%2fU7zMg6qHMWdM%2bBFY%3d&risl=&pid=ImgRaw&r=0"
+          alt="Telegram Logo"
+          class="w-10 h-10 rounded-full mr-4"
+        />
+        <h2 class="text-lg font-bold text-gray-800">
+          Join Our Telegram Channel
+        </h2>
+      </div>
+      <p class="text-gray-600 mb-4">
+        Stay updated with the latest news and updates from our website!
+      </p>
+      <a
+        href="https://t.me/+_gMhdEhnQwAzNzRl"
+        target="_blank"
+        class="inline-block px-6 py-3 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out bg-blue-600 hover:bg-blue-700 focus:bg-blue-700"
+        >Join Now</a
+      >
+    </div>
+
+    <script>
+      function showPopup() {
+        document.getElementById("telegramPopup").style.display = "block";
+      }
+
+      // Function to close the popup
+      function closePopup() {
+        document.getElementById("telegramPopup").style.display = "none";
+      }
+
+      // Show the popup after a short delay (adjust the delay as needed)
+      let popupCount = 0;
+      function showPopupWithCount() {
+        if (popupCount < 3) {
+          showPopup();
+          popupCount++;
+        }
+      }
+
+      // Show the popup on page load
+      showPopupWithCount();
+
+      // Add event listener for closing the popup
+      document
+        .getElementById("telegramPopup")
+        .addEventListener("click", (event) => {
+          if (event.target.classList.contains("popup-close")) {
+            closePopup();
+            setTimeout(showPopupWithCount, 2000); // Show again after 3 seconds
+          }
+        });
+
+      const quantitySlider = document.getElementById("quantity-slider");
+      const buyQuantity = document.getElementById("buy-quantity");
+      quantitySlider.addEventListener("input", function () {
+        buyQuantity.textContent = this.value;
+      });
+    </script>
+  </body>
+</html>

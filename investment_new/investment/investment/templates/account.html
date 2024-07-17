@@ -1,0 +1,423 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FutureTune | Account</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+      }
+      @media (max-width: 768px) {
+        .bg-white > .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 min-h-screen p-4">
+    <div class="bg-blue-500 p-4 rounded-t-lg text-white">
+
+          <div class="text-lg font-semibold">{{ username }}</div>
+        <div class="text-sm">{{ phone_number }} </div>
+        </div>
+        <a href="./userdetail.html">
+          <img
+            src="https://img.icons8.com/?size=40&id=36929&format=png&color=ffffff"
+            alt="Logo"
+            class="ml-auto"
+          />
+        </a>
+      </div>
+    </div>
+    <div class="bg-white p-4 rounded-b-lg shadow-md mt-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        <div class="bg-gray-200 p-4 rounded-lg text-center flex items-center justify-around">
+          <div>
+            <div class="text-lg font-semibold">Balance</div>
+            <div class="text-3xl font-bold text-blue-500">₹ {{ balance|floatformat:2 }}</div>
+          </div>
+          <div>
+            <div class="text-lg font-semibold">Coin</div>
+            <div class="text-3xl font-bold text-blue-500">{{user.coin}}</div>
+          </div>
+        </div>
+
+        <div class="bg-gray-200 p-4 rounded-lg text-center">
+          <div class="text-lg font-semibold">Deposit</div>
+          <div class="text-2xl font-bold text-green-500">₹ {{ Deposit|floatformat:2 }}</div>
+        </div>
+        <div class="bg-gray-200 p-4 rounded-lg text-center">
+          <div class="text-lg font-semibold">Withdraw</div>
+          <div class="text-2xl font-bold text-red-500">₹ {{ Withdraw|floatformat:2 }}</div>
+        </div>
+      </div>
+      <div class="flex justify-between items-center mb-4">
+        <a href="{% url "orders" %}">
+          <div class="flex items-center space-x-2">
+            <img
+              src="https://img.icons8.com/ios-filled/50/000000/order-history.png"
+              alt="Order"
+              class="h-6"
+            />
+            <div>
+              <div class="font-semibold">My Order</div>
+              <div class="text-sm text-gray-500">
+                Items in income: <span class="text-green-500">{{deposit}}</span>
+              </div>
+            </div>
+          </div>
+        </a>
+        <img
+          src="https://img.icons8.com/ios-filled/50/000000/forward.png"
+          alt="Arrow"
+          class="h-6"
+        />
+      </div>
+      <div class="flex justify-between items-center">
+        <button>
+          <div class="flex items-center space-x-2">
+            <img
+              src="https://img.icons8.com/?size=100&id=60018&format=png&color=000000"
+              alt="Team"
+              class="h-6"
+            />
+            <div  onclick="showPopup_2()">
+              <div class="font-semibold text-left">Team</div>
+              <div class="text-sm text-gray-500">
+                Headcount: <span class="text-green-500">0</span>
+              </div>
+            </div>
+          </div>
+        </button> 
+        <img
+          src="https://img.icons8.com/ios-filled/50/000000/forward.png"
+          alt="Arrow"
+          class="h-6"
+        />
+      </div>
+      <!-- <div class="flex justify-between items-center pt-5">
+        <a href="./VIP.html">
+          <div class="flex items-center space-x-2">
+            <img
+              src="https://img.icons8.com/?size=100&id=7745&format=png&color=000000"
+              alt="Team"
+              class="h-6"
+            />
+            <div>
+              <div class="font-semibold">VIP Record</div>
+              
+            </div>
+          </div>
+        </a>
+        <img
+          src="https://img.icons8.com/ios-filled/50/000000/forward.png"
+          alt="Arrow"
+          class="h-6"
+        />
+      </div> -->
+      <!-- <div class="flex justify-between items-center pt-5">
+        <a href="#">
+          <div class="flex items-center space-x-2">
+            <img
+              src="https://img.icons8.com/?size=100&id=21448&format=png&color=000000"
+              alt="Fund"
+              class="h-6"
+            />
+            <div>
+              <div class="font-semibold">Fund Record</div>
+              
+            </div>
+          </div>
+        </a>
+        <img
+          src="https://img.icons8.com/ios-filled/50/000000/forward.png"
+          alt="Arrow"
+          class="h-6"
+        />
+      </div> -->
+      <div class="flex justify-between items-center pt-5">
+        <button>
+          <div class="flex items-center space-x-2">
+            <img
+              src="https://img.icons8.com/?size=100&id=So9Gvu5Hcyjh&format=png&color=000000"
+              alt="Bank"
+              class="h-6"
+            />
+            <div onclick="showPopup_2()">
+              <div class="font-semibold text-left">Bank Card</div>
+              {% if user.ifsc %}
+              <div class="text-sm text-gray-500">
+                Card details: <span class="text-green-500">{{user.account_number}}</span>
+              </div>
+              {% else %}
+              <div class="text-sm text-gray-500">
+                Card details: <span class="text-green-500">00000 card number</span>
+              </div>
+              {% endif %}
+              
+            </div>
+          </div>
+        </button>
+        <img
+          src="https://img.icons8.com/ios-filled/50/000000/forward.png"
+          alt="Arrow"
+          class="h-6"
+        />
+      </div>
+      <div class="flex justify-between items-center pt-5">
+        <a href="{% url "withdrawal_orders" %}">
+          <div class="flex items-center space-x-2">
+            <img
+              src="https://img.icons8.com/?size=100&id=7985&format=png&color=000000"
+              alt="commision"
+              class="h-6"
+            />
+            <div>
+              <div class="font-semibold">Withdrawal Record</div>
+            </div>
+          </div>
+        </a>
+        <img
+          src="https://img.icons8.com/ios-filled/50/000000/forward.png"
+          alt="Arrow"
+          class="h-6"
+        />
+      </div>
+      <div class="flex justify-between items-center pt-5">
+        <a href="{% url "review" %}">
+          <div class="flex items-center space-x-2">
+            <img
+              src="https://img.icons8.com/?size=100&id=7731&format=png&color=000000"
+              alt="customer care"
+              class="h-6"
+            />
+            <div>
+              <div class="font-semibold">Help Centre</div>
+
+            </div>
+          </div>
+        </a>
+        <img
+          src="https://img.icons8.com/ios-filled/50/000000/forward.png"
+          alt="Arrow"
+          class="h-6"
+        />
+      </div>
+      <!-- <div class="flex justify-between items-center pt-5">
+        <a href="#">
+          <div class="flex items-center space-x-2">
+            <img
+              src="https://img.icons8.com/?size=100&id=14736&format=png&color=000000"
+              alt="info"
+              class="h-6"
+            />
+            <div>
+              <div class="font-semibold">My info</div>
+
+            </div>
+          </div>
+        </a>
+        <img
+          src="https://img.icons8.com/ios-filled/50/000000/forward.png"
+          alt="Arrow"
+          class="h-6"
+        />
+      </div> -->
+      <div class="flex justify-between items-center pt-5 pb-20">
+        <a href="{% url 'logout' %}">
+          <div class="flex items-center space-x-2">
+            <img
+              src="https://img.icons8.com/?size=100&id=8119&format=png&color=000000"
+              alt="logout"
+              class="h-6"
+            />
+            <div>
+              <div class="font-semibold">Logout</div>
+
+            </div>
+          </div>
+        </a>
+        <img
+          src="https://img.icons8.com/ios-filled/50/000000/forward.png"
+          alt="Arrow"
+          class="h-6"
+        />
+      </div>
+    </div>
+    <div
+      class="fixed bottom-0 left-0 right-0 bg-zinc-800 p-2 shadow-md flex justify-around"
+    >
+      <a href="{% url 'home' %}">
+        <div class="flex flex-col items-center">
+          <img
+            src="https://img.icons8.com/ios-filled/50/ffffff/home.png"
+            alt="Home"
+            class="h-6"
+          />
+          <span class="text-xs text-zinc-300">Home</span>
+        </div>
+      </a>
+      <a href="{% url "invest" %}">
+        <div class="flex flex-col items-center">
+          <img
+            src="https://img.icons8.com/ios-filled/50/ffffff/investment.png"
+            alt="Invest"
+            class="h-6"
+          />
+          <span class="text-xs text-zinc-300">Invest</span>
+        </div>
+      </a>
+      <a href="{% url "review" %}">
+        <div class="flex flex-col items-center">
+          <img
+            src="https://img.icons8.com/?size=100&id=54386&format=png&color=ffffff"
+            alt="Review"
+            class="h-6"
+          />
+          <span class="text-xs text-zinc-300">Support</span>
+        </div>
+      </a>
+      <a href="{% url "account" %}">
+        <div class="flex flex-col items-center">
+          <img
+            src="https://img.icons8.com/ios-filled/50/ffffff/user.png"
+            alt="Account"
+            class="h-6"
+          />
+          <span class="text-xs text-zinc-300">Account</span>
+        </div>
+      </a>
+    </div>
+    <!-- Telegram Popup -->
+    <div
+      id="telegramPopup"
+      class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded-lg p-6 z-50"
+      style="max-width: 400px; display: none"
+    >
+      <button
+        class="absolute top-3 right-3 text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-300"
+        onclick="closePopup()"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6"
+          />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 6l12 12"
+          />
+        </svg>
+      </button>
+      <div class="flex items-center mb-4">
+        <img
+          src="https://th.bing.com/th/id/R.856125c6aca3db8a02f309f4eb9fe9ad?rik=YhEI4FnHZJbfJw&riu=http%3a%2f%2fassets.stickpng.com%2fthumbs%2f5842a8fba6515b1e0ad75b03.png&ehk=rRMAIHTvtZrw%2bnhc892BXLEPZ5%2fU7zMg6qHMWdM%2bBFY%3d&risl=&pid=ImgRaw&r=0"
+          alt="Telegram Logo"
+          class="w-10 h-10 rounded-full mr-4"
+        />
+        <h2 class="text-lg font-bold text-gray-800">
+          Join Our Telegram Channel
+        </h2>
+      </div>
+      <p class="text-gray-600 mb-4">
+        Stay updated with the latest news and updates from our website!
+      </p>
+      <a
+        href="https://t.me/+_gMhdEhnQwAzNzRl"
+        target="_blank"
+        class="inline-block px-6 py-3 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out bg-blue-600 hover:bg-blue-700 focus:bg-blue-700"
+        >Join Now</a
+      >
+    </div>
+
+    <!-- Coming Soon Popup -->
+    <div
+      id="SoonPopup"
+      class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded-lg p-6 z-50"
+      style="max-width: 400px; display: none;"
+    >
+      <button
+        class="absolute top-1 right-3 text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-300"
+        onclick="closePopup_2()"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6"
+          />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 6l12 12"
+          />
+        </svg>
+      </button>
+      <div class="flex items-center mb-4">
+        <h2 class="text-lg font-bold text-gray-800 pt-4">
+          This feature is coming soon
+        </h2>
+      </div>
+    </div>
+
+    <script>
+      function showPopup_2() {
+        document.getElementById("SoonPopup").style.display = "block";
+      }
+
+      function closePopup_2() {
+        document.getElementById("SoonPopup").style.display = "none";
+      }
+      // // Function to show the popup
+      // function showPopup() {
+      //   document.getElementById("telegramPopup").style.display = "block";
+      // }
+
+      // // Function to close the popup
+      // function closePopup() {
+      //   document.getElementById("telegramPopup").style.display = "none";
+      // }
+
+      // // Show the popup after a short delay (adjust the delay as needed)
+      // let popupCount = 0;
+      // function showPopupWithCount() {
+      //   if (popupCount < 3) {
+      //     showPopup();
+      //     popupCount++;
+      //   }
+      // }
+
+      // // Show the popup on page load
+      // showPopupWithCount();
+
+      // // Add event listener for closing the popup
+      // document
+      //   .getElementById("telegramPopup")
+      //   .addEventListener("click", (event) => {
+      //     if (event.target.classList.contains("popup-close")) {
+      //       closePopup();
+      //       setTimeout(showPopupWithCount, 2000); // Show again after 3 seconds
+      //     }
+      //   });
+    </script>
+  </body>
+</html>

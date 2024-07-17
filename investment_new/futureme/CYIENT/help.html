@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script
+      src="https://unpkg.com/unlazy@0.11.3/dist/unlazy.with-hashing.iife.js"
+      defer
+      init
+    ></script>
+    <script type="text/javascript">
+      window.tailwind.config = {
+        darkMode: ["class"],
+        theme: {
+          extend: {
+            colors: {
+              // Your existing colors...
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer base {
+        :root {
+          --background: 0 0% 100%;
+          --foreground: 240 10% 3.9%;
+          --card: 0 0% 100%;
+          --card-foreground: 240 10% 3.9%;
+          --popover: 0 0% 100%;
+          --popover-foreground: 240 10% 3.9%;
+          --primary: 240 5.9% 10%;
+          --primary-foreground: 0 0% 98%;
+          --secondary: 240 4.8% 95.9%;
+          --secondary-foreground: 240 5.9% 10%;
+          --muted: 240 4.8% 95.9%;
+          --muted-foreground: 240 3.8% 46.1%;
+          --accent: 240 4.8% 95.9%;
+          --accent-foreground: 240 5.9% 10%;
+          --destructive: 0 84.2% 60.2%;
+          --destructive-foreground: 0 0% 98%;
+          --border: 240 5.9% 90%;
+          --input: 240 5.9% 90%;
+          --ring: 240 5.9% 10%;
+          --radius: 0.5rem;
+        }
+        .dark {
+          --background: 240 10% 3.9%;
+          --foreground: 0 0% 98%;
+          --card: 240 10% 3.9%;
+          --card-foreground: 0 0% 98%;
+          --popover: 240 10% 3.9%;
+          --popover-foreground: 0 0% 98%;
+          --primary: 0 0% 98%;
+          --primary-foreground: 240 5.9% 10%;
+          --secondary: 240 3.7% 15.9%;
+          --secondary-foreground: 0 0% 98%;
+          --muted: 240 3.7% 15.9%;
+          --muted-foreground: 240 5% 64.9%;
+          --accent: 240 3.7% 15.9%;
+          --accent-foreground: 0 0% 98%;
+          --destructive: 0 62.8% 30.6%;
+          --destructive-foreground: 0 0% 98%;
+          --border: 240 3.7% 15.9%;
+          --input: 240 3.7% 15.9%;
+          --ring: 240 4.9% 83.9%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-white dark:bg-zinc-900 min-h-screen p-4">
+      <header class="flex items-center justify-between mb-8">
+        <a href="./home.html">
+          <button
+            class="bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-600 dark:text-gray-400 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center"
+          >
+            <img
+              aria-hidden="true"
+              alt="back-arrow"
+              src="https://img.icons8.com/?size=30&id=40217&format=png&color=000000"
+            />
+          </button>
+        </a>
+        <h1 class="text-3xl font-bold text-zinc-800 dark:text-zinc-200">
+          Help Center
+        </h1>
+        <div></div>
+      </header>
+      <section
+        class="bg-blue-50 dark:bg-zinc-800 p-4 rounded-lg mb-6 shadow-md"
+      >
+        <h2
+          class="text-2xl font-bold text-blue-700 dark:text-blue-300 mb-2"
+        >
+          Service Center
+        </h2>
+        <p class="text-zinc-600 dark:text-zinc-400 mb-4">
+          Accompany you all the way when you need it
+        </p>
+        <img
+          class="mt-4 rounded-lg"
+          src="./help.jpg"
+          alt="Customer service representative"
+        />
+      </section>
+      <section class="space-y-4">
+        <div class="bg-white dark:bg-zinc-800 p-4 rounded-lg shadow-md">
+          <a href="#">
+            <div class="flex items-center">
+              <img
+                aria-hidden="true"
+                alt="telegram-icon"
+                src="https://img.icons8.com/?size=100&id=k4jADXhS5U1t&format=png&color=000000"
+                class="mr-4"
+              />
+              <div>
+                <h3
+                  class="text-lg font-semibold text-zinc-800 dark:text-zinc-200"
+                >
+                  Official Information Release
+                </h3>
+                <p class="text-zinc-600 dark:text-zinc-400">
+                  Follow our official telegram channel to get the latest news and
+                  welfare information
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+      <footer class="mt-8 text-center text-zinc-500 dark:text-zinc-400">
+        © 2024 FutureMe | All right reserved
+      </footer>
+    </div>
+  </body>
+</html>

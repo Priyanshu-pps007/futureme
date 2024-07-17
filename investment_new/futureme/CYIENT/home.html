@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        /* overflow: hidden; */
+      }
+      #vanta-globe {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        z-index: -1;
+        pointer-events: none;
+        background: linear-gradient(to top, #0059ff, #008cff);
+      }
+
+      /* Blue theme styles */
+      .blue-theme {
+        background-color: rgba(233, 237, 233, 255); /* Blue background */
+        color: white; /* White text color */
+        border-radius: 10px;
+        padding: 20px;
+      }
+
+      /* Style for the top menu box */
+      .blue-theme .flex1 {
+        background-color: whitesmoke;
+        padding: 10px 20px; /* Add padding */
+        border-radius: 10px; /* Round the corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+      }
+
+      /* Add blue background to the grey rectangle */
+
+      .shadow-gray-500 {
+        box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px -4px -1px rgba(0, 0, 0, 0.06);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="vanta-globe"></div>
+    <div class="p-4">
+      <div class="blue-theme">
+        <div class="flex items-center justify-between flex">
+          <a href="./home.html">
+            <img src="./logo.png" alt="Logo" class="h-8" />
+          </a>
+          <a href="./home.html">
+            <img src="./short_logo.png" alt="Logo" class="h-12" />
+          </a>
+        </div>
+        <div class="flex justify-around mt-4 blue-theme text-black flex1">
+          <a href="./deposit.html">
+            <div class="flex flex-col items-center">
+              <img
+                src="https://img.icons8.com/?size=100&id=21451&format=png&color=000000"
+                alt="Deposit"
+                class="h-8"
+              />
+              <span class="text-sm mt-1 text-black">Deposit</span>
+            </div>
+          </a>
+          <a href="./bank.html">
+            <div class="flex flex-col items-center">
+              <img
+                src="https://img.icons8.com/?size=100&id=CAnNXt8D8ts5&format=png&color=000000"
+                alt="Withdraw"
+                class="h-8"
+              />
+              <span class="text-sm mt-1">Withdraw</span>
+            </div>
+          </a>
+          <a href="./TEAM.html">
+            <div class="flex flex-col items-center">
+              <img
+                src="https://img.icons8.com/?size=100&id=60018&format=png&color=000000"
+                alt="Team"
+                class="h-8"
+              />
+              <span class="text-sm mt-1">Team</span>
+            </div>
+          </a>
+          <a href="./messages.html">
+            <div class="relative flex flex-col items-center">
+              <img
+                src="https://img.icons8.com/ios-filled/50/000000/appointment-reminders.png"
+                alt="Messages"
+                class="h-8"
+              />
+              <span class="text-sm mt-1">Messages</span>
+              <span
+                class="absolute top-0 right-0 bg-red-500 rounded-full text-xs w-4 h-4 flex items-center justify-center"
+                >3</span
+              >
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="blue-theme p-4 rounded-lg shadow-md mt-4 mx-4">
+        <div class="flex justify-between text-black blue-theme flex1">
+          <div class="flex flex1 flex-col items-center">
+            <span class="text-sm">Balance</span>
+            <span class="text-lg font-bold text-black">₹ 100.00</span>
+          </div>
+          <div class="flex flex-col flex1 items-center">
+            <span class="text-sm">Revenue</span>
+            <span class="text-lg font-bold text-green-600">₹ 4.83 Cr+</span>
+          </div>
+        </div>
+      </div>
+      <div class="blue-theme p-4 rounded-lg shadow-md mt-4 mx-4">
+        <div class="p-2 rounded flex1">
+          <p class="text-black text-sm">
+            Invite a friend to register and become a VIP1 user, and receive a
+            commission reward of 100 rupees.
+          </p>
+          <p class="text-black text-sm mt-2 font-semibold">Commission Rate</p>
+          <ul class="text-black text-sm mt-1">
+            <li>Commission Level 1: 33%</li>
+            <li>Commission Level 2: 2%</li>
+            <li>Commission Level 3: 1%</li>
+          </ul>
+          <img
+            src="./commision.jpg"
+            alt="Daily invite rewards"
+            class="mt-4 rounded-lg"
+          />
+        </div>
+      </div>
+      <div
+        class="blue-theme text-black p-4 rounded-lg flex items-center justify-between mt-4"
+      >
+        <div class="flex1">
+          <h2 class="text-lg font-bold">Daily invite rewards</h2>
+          <p class="text-sm">Ask a friend to return the commission</p>
+        </div>
+        <img
+          src="./coin.jpg"
+          alt="coins"
+          class="w-12 h-12"
+        />
+      </div>
+
+      <div class="mt-4 p-4 rounded-lg blue-theme">
+        <div class="flex1">
+          <p class="text-sm text-black">Invite Link</p>
+          <a href="BLUE" class="text-blue-500 text-sm block mb-4"
+            >INVITE LINK OF USER</a
+          >
+          <div class="flex space-x-4">
+            <button class="bg-green-600 text-white py-2 px-4 rounded-lg">
+              QRCode
+            </button>
+            <button class="bg-green-600 text-white py-2 px-4 rounded-lg">
+              Copy Invite Link
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 blue-theme p-4 rounded-lg mb-20">
+        <h3 class="text-lg font-bold text-black mb-4">More Quest Rewards</h3>
+        <div class="space-y-4">
+          <div class="flex items-center p-4 flex1 rounded-lg">
+            <img
+              src="./coin.jpg"
+              alt="gift"
+              class="w-12 h-12"
+            />
+            <div class="ml-4">
+              <h4 class="text-md font-bold text-black">
+                Inviting activation of 5
+              </h4>
+              <div class="flex justify-between text-sm text-black">
+                <span>0 / 5 Schedule</span>
+                <span>₹ 50 Reward amount</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center p-4 flex1 rounded-lg">
+            <img
+              src="./coin.jpg"
+              alt="gift"
+              class="w-12 h-12"
+            />
+            <div class="ml-4">
+              <h4 class="text-md font-bold text-black">
+                Inviting activation of 10
+              </h4>
+              <div class="flex justify-between text-sm text-black">
+                <span>0 / 10 Schedule</span>
+                <span>₹ 150 Reward amount</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="fixed bottom-0 left-0 right-0 bg-zinc-800 p-2 shadow-md flex justify-around blue-theme shadow-gray-500"
+      >
+        <a href="./home.html">
+          <div class="flex flex-col items-center">
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/home.png"
+              alt="Home"
+              class="h-6"
+            />
+            <span class="text-xs text-white">Home</span>
+          </div>
+        </a>
+        <a href="./invest.html">
+          <div class="flex flex-col items-center">
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/investment.png"
+              alt="Invest"
+              class="h-6"
+            />
+            <span class="text-xs text-white">Invest</span>
+          </div>
+        </a>
+        <a href="./review.html">
+          <div class="flex flex-col items-center">
+            <img
+              src="https://img.icons8.com/?size=100&id=54386&format=png&color=ffffff"
+              alt="Review"
+              class="h-6"
+            />
+            <span class="text-xs text-white">Review</span>
+          </div>
+        </a>
+        <a href="./account.html">
+          <div class="flex flex-col items-center">
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/user.png"
+              alt="Account"
+              class="h-6"
+            />
+            <span class="text-xs text-white">Account</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Telegram Popup -->
+    <div
+      id="telegramPopup"
+      class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded-lg p-6 z-50"
+      style="max-width: 400px; display: none"
+    >
+      <button
+        class="absolute top-3 right-3 text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-300"
+        onclick="closePopup()"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6"
+          />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 6l12 12"
+          />
+        </svg>
+      </button>
+      <div class="flex items-center mb-4">
+        <img
+          src="https://th.bing.com/th/id/R.856125c6aca3db8a02f309f4eb9fe9ad?rik=YhEI4FnHZJbfJw&riu=http%3a%2f%2fassets.stickpng.com%2fthumbs%2f5842a8fba6515b1e0ad75b03.png&ehk=rRMAIHTvtZrw%2bnhc892BXLEPZ5%2fU7zMg6qHMWdM%2bBFY%3d&risl=&pid=ImgRaw&r=0"
+          alt="Telegram Logo"
+          class="w-10 h-10 rounded-full mr-4"
+        />
+        <h2 class="text-lg font-bold text-gray-800">
+          Join Our Telegram Channel
+        </h2>
+      </div>
+      <p class="text-gray-600 mb-4">
+        Stay updated with the latest news and updates from our website!
+      </p>
+      <a
+        href="https://t.me/+_gMhdEhnQwAzNzRl"
+        target="_blank"
+        class="inline-block px-6 py-3 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out bg-blue-600 hover:bg-blue-700 focus:bg-blue-700"
+        >Join Now</a
+      >
+    </div>
+
+    <script>
+      // Function to show the popup
+      function showPopup() {
+        document.getElementById("telegramPopup").style.display = "block";
+      }
+
+      // Function to close the popup
+      function closePopup() {
+        document.getElementById("telegramPopup").style.display = "none";
+      }
+
+      // Show the popup after a short delay (adjust the delay as needed)
+      let popupCount = 0;
+      function showPopupWithCount() {
+        if (popupCount < 3) {
+          showPopup();
+          popupCount++;
+        }
+      }
+
+      // Show the popup on page load
+      showPopupWithCount();
+
+      // Add event listener for closing the popup
+      document
+        .getElementById("telegramPopup")
+        .addEventListener("click", (event) => {
+          if (event.target.classList.contains("popup-close")) {
+            closePopup();
+            setTimeout(showPopupWithCount, 2000); // Show again after 3 seconds
+          }
+        });
+    </script>
+  </body>
+</html>

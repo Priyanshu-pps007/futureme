@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FutureTune | Bank Details</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-zinc-800">
+    {% for msg in messages %}
+    <div class="absolute z-[10] w-1/4 h-[10%] bg-gray-800 absolute top-0 left-1/2 -translate-x-1/2 text-white text-center">
+      <p class="pt-2">{{msg}}</p>
+    </div>
+    {% endfor %}
+    <div
+      class="max-w-md mx-auto dark:bg-zinc-800 p-6 rounded-lg shadow-md text-zinc-700 dark:text-zinc-300"
+    >
+      <div class="bg-blue-500 text-white text-center py-2 rounded-t-lg">
+        <h2 class="text-lg font-semibold">Add BankCard</h2>
+      </div>
+      <form method='POST' action={% url "bank" %} class="space-y-4 mt-4">
+        {% csrf_token %}
+        <div>
+          <label class="block text-zinc-700 dark:text-zinc-300"
+            >Bank IFSC</label
+          >
+          <input
+            type="text"
+            name="ifsc"
+            class="w-full mt-1 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white"
+            placeholder="Bank IFSC"
+            required
+          />
+        </div>
+        <div>
+          <label class="block text-zinc-700 dark:text-zinc-300"
+            >Card Holder Name</label
+          >
+          <input
+            type="text"
+            name="holder"
+            class="w-full mt-1 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white"
+            placeholder="Card Holder Name"
+            required
+          />
+        </div>
+        <div>
+          <label class="block text-zinc-700 dark:text-zinc-300"
+            >Bank Account No</label
+          >
+          <input
+            type="text"
+            name="acc_num"
+            class="w-full mt-1 p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-zinc-700 dark:border-zinc-600 dark:placeholder-zinc-400 dark:text-white"
+            placeholder="Bank Account No"
+            required
+          />
+        </div>
+        <button
+            type='submit'
+            class="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 text-center"
+          >
+            Proceed</button>
+      </form>
+      <div class="mt-6">
+        <h3 class="text-blue-500 dark:text-blue-300 font-semibold">Explain</h3>
+        <ul class="list-disc list-inside text-zinc-700 dark:text-zinc-300 mt-2">
+          <li>Only one withdrawal bank account can be bound</li>
+          <li>
+            Please ensure that the bank account is correct and functioning
+            properly
+          </li>
+        </ul>
+          
+      </div>
+      <div class="flex justify-between items-center mt-4">
+        <button
+          type="button"
+          class="bg-transparent text-blue-500 dark:text-blue-300 focus:outline-none"
+        >
+          <img aria-hidden="true" alt="back" src="https://placehold.co/24" />
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

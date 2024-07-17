@@ -1,0 +1,63 @@
+{% load static %}
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FutureTune | Reset Password</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<!-- <style>
+  #otp::-webkit-inner-spin-button,
+  #otp::-webkit-outer-spin-button{
+    display: none;
+  }
+</style> -->
+<body>
+  <div class="min-h-screen flex items-center justify-center bg-gray-900" id="bg">
+    <div class="fixed top-3 left-0 right-0 flex justify-center">
+      <a href="{% url 'home' %}">
+        <img src="{% static 'Images/logo.png' %}" alt="logo" class="w-21 h-auto" />
+      </a>
+    </div>
+    {% for msg in messages %}
+    <div class="absolute z-[10] w-1/4 h-[10%] bg-gray-800 absolute top-0 left-1/2 -translate-x-1/2 text-white text-center">
+      <p class="pt-2">{{msg}}</p>
+    </div>
+    {% endfor %}
+    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 w-full max-w-md">
+      <div class="flex justify-between mb-6">
+        <button
+          class="w-full py-2 text-center text-green-700 dark:text-green-500 font-semibold border-b-2 border-green-700 dark:border-green-500">
+          Reset Password
+        </button>
+      </div>
+      <form method="POST" action="{% url 'resetpass' username %}">
+        {% csrf_token %}
+          <input class="mb-4 w-full h-[3rem] rounded-md text-center tracking-widest text-xl" type="text" name="newpassword" placeholder="Enter your new password">
+          <input class="mb-4 w-full h-[3rem] rounded-md text-center tracking-widest text-xl" type="text" name="newconfirm" placeholder="Confirm your new password">
+        <button type="submit" class="login-button-container w-full py-3 bg-green-700 dark:bg-green-500 text-white rounded-lg font-semibold hover:bg-green-800 dark:hover:bg-green-600 text-center">Proceed</button>
+      </form>
+    </div>
+  </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.dots.min.js"></script>
+<script>
+  VANTA.DOTS({
+    el: "#bg",
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: true,
+    minHeight: 100,
+    minWidth: 200.0,
+    scale: 1.0,
+    scaleMobile: 1.0,
+    color: 0x20ffa3,
+    color2: 0x20ffe4,
+    size: 4.7,
+    spacing: 19.0,
+    showLines: true,
+  });
+</script>
+
+</html>

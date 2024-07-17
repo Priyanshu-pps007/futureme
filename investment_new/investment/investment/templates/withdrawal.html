@@ -1,0 +1,142 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    {% for message in messages %}
+        <div class="absolute z-[10] text-white text-xl alert alert-{{message.tags}} alert-dismissable fade show" role="alert">
+            <strong>Message:</strong> {{message}}
+        </div>
+    {% endfor %}
+    <div
+      class="min-h-screen flex flex-col items-center justify-center bg-zinc-100 dark:bg-zinc-900 p-4"
+    >
+      <div
+        class="w-full max-w-md bg-white dark:bg-zinc-800 rounded-lg shadow-md p-6 relative"
+      >
+        <a href="{% url "home" %}">
+          <img
+            aria-hidden="true"
+            alt="back"
+            src="https://img.icons8.com/?size=35&id=40217&format=png&color=ffffff"
+            class="absolute top-4 left-4 cursor-pointer"
+          />
+        </a>
+        {% if deposit %}
+        <h1 class="text-center text-2xl font-bold text-blue-500 mb-4">
+          Withdraw
+        </h1>
+        <div class="bg-zinc-100 dark:bg-zinc-700 p-4 rounded-lg mb-6">
+          <p class="text-zinc-500 dark:text-zinc-400">Withdrawable</p>
+          <div class="flex items-center justify-between">
+            <p class="text-2xl font-bold text-black dark:text-white">₹ {{user.balance}}</p>
+            <p class="text-2xl font-bold text-black dark:text-white">/</p>
+            <p class="text-2xl font-bold text-black dark:text-white">{{user.coin}} Coins</p>
+          </div>
+        </div>
+        <div class="mb-4">
+          <p class="text-lg font-semibold text-black dark:text-white">{{user.username}}</p>
+          <p class="text-lg font-semibold text-blue-500">{{user.account_number}}</p>
+        </div>
+        <form method='POST' action='{% url "withdrawal" %}'>
+          {% csrf_token %}
+          <input name="check" id="check" type="checkbox" onclick="Check()">
+          <label for="check" class="text-white">Coins</label>
+          <br>
+          <label
+            for="UPI"
+            class="Upi text-sm font-medium text-zinc-700 dark:text-zinc-300"
+            >UPI ID</label
+          >
+          <input
+            type="text"
+            name="upi"
+            id="UPI"
+            class="UPI mt-1 mb-4 block w-full px-3 py-2 bg-white dark:bg-zinc-700 border border-zinc-300 dark:border-zinc-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-white"
+            placeholder="Enter UPI ID"
+          />
+          <label
+            for="withdrawal-amount"
+            class="Balance text-sm font-medium text-zinc-700 dark:text-zinc-300"
+            >Withdrawal Amount</label
+          >
+          <input
+            type="text"
+            name="balance"
+            id="withdrawal-amount"
+            class="Balance mt-1 mb-4  w-full px-3 py-2 bg-white dark:bg-zinc-700 border border-zinc-300 dark:border-zinc-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-white"
+            placeholder="Withdrawal Amount"
+          />
+          <label
+            for="withdrawal-amount"
+            class="Coin hidden text-sm font-medium text-zinc-700 dark:text-zinc-300"
+            >Coin Withdrawal</label
+          >
+          <input
+            type="text"
+            name="coin"
+            id="withdrawal-amount"
+            class="Coin hidden mt-1 mb-4 block w-full px-3 py-2 bg-white dark:bg-zinc-700 border border-zinc-300 dark:border-zinc-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-white"
+            placeholder="Coin Withdrawal"
+          />
+          <label
+            for="transaction-password"
+            class="block text-sm font-medium text-zinc-700 dark:text-zinc-300"
+            >Transaction Password</label
+          >
+          <input
+            type="password"
+            name='pwd'
+            id="transaction-password"
+            class="mt-1 mb-4 block w-full px-3 py-2 bg-white dark:bg-zinc-700 border border-zinc-300 dark:border-zinc-600 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm text-white"
+            placeholder="Please enter transaction password"
+          />
+          <button
+            class="w-full bg-blue-500 text-white py-2 rounded-lg font-semibold hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          >
+            Submit withdrawal
+          </button>
+        </form>
+      </div>
+      <div class="w-full max-w-md mt-6">
+        <details class="text-sm text-zinc-500 dark:text-zinc-400">
+          <summary>Explanations</summary>
+          <div class="w-full max-w-md mt-6">
+            <p class="text-sm text-zinc-500 dark:text-zinc-400">
+              The withdrawal is from this time to this time etc etc.
+            </p>
+          </div>
+          <p>The withdrawal is open from this time to that time, etc, etc.</p>
+        </details>
+      </div>
+    </div>
+    {% else %}
+    <h1 class="text-white text-3xl mt-12">No Deposits Made</h1>
+    {% endif %}
+  </body>
+  <script>
+    var checkbox = document.querySelector('#check')
+    var Balance = document.querySelectorAll('.Balance')
+    var Coin = document.querySelectorAll('.Coin')
+    function Check(){
+      if(checkbox.checked){
+        Balance.forEach((item)=>{
+          item.style.display = 'none';
+        })
+        Coin.forEach((item)=>{
+          item.style.display = 'block';
+        })
+      }
+      else{
+        Balance.forEach((item)=>{
+          item.style.display = 'block';
+        })
+        Coin.forEach((item)=>{
+          item.style.display = 'none';
+        })
+      }
+    }
+  </script>
+</html>

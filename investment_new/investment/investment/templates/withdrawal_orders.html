@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 font-sans"> <div class="container mx-auto p-4"> 
+    <div class="flex justify-between items-center mb-4"> 
+        <a href="{% url "home" %}" class="text-blue-500 hover:text-gray-200 cursor-pointer">
+          <span class="material-icons">arrow_back</span>
+        </a>
+        <div class="bg-blue-500 text-white text-center py-2 px-4 rounded-lg">
+          <h1 class="text-lg font-semibold">Orders</h1>
+        </div>
+      </div>
+      {% if withdrawals %}
+        {% for order in withdrawals %}
+        <div class="bg-white shadow-md rounded-lg p-4 mb-4">
+          {% if order.coin %}
+          <div class="flex justify-between text-gray-600">
+            <span>Order amount</span>
+            <span class="font-semibold text-gray-800">{{order.coin}} coins</span>
+          </div>
+          {% else %}
+          <div class="flex justify-between text-gray-600">
+            <span>Order amount</span>
+            <span class="font-semibold text-gray-800">₹{{order.amount}}</span>
+          </div>
+          {% endif %}
+          <div class="flex justify-between text-gray-600">
+            <span>Order time</span>
+            <span class="font-semibold text-gray-800">{{order.timestamp}}</span>
+          </div>
+          <!-- <div class="flex justify-between text-gray-600">
+            <span>Expire time</span>
+            <span class="font-semibold text-gray-800">16:42 PM, 19 Jun 26</span>
+          </div> -->
+          <!-- <div class="flex justify-between text-gray-600">
+            <span>Working days</span>
+            <span class="text-green-500 font-semibold">5 days</span>
+          </div> -->
+          <!-- <div class="flex justify-between text-gray-600">
+            <span>Earned income</span>
+            <span class="text-green-500 font-semibold">₹amount.00</span>
+          </div> -->
+          {% if order.completed %}
+          <div class="flex justify-between text-gray-600">
+            <span>Status</span>
+            <span class="text-green-500 font-semibold">Completed</span>
+          </div>
+          {% else %}
+          <div class="flex justify-between text-gray-600">
+            <span>Status</span>
+            <span class="text-yellow-500 font-semibold">Pending</span>
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      {% else %}
+        <div class="w-full h-[10rem] bg-blue-500 rounded-md flex items-center justify-center">
+          <h1 class="text-3xl text-white">No Withdrawals made</h1>
+        </div>
+      {% endif %}
+    </div>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Telegram Popup -->
+    <div
+      id="telegramPopup"
+      class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded-lg p-6 z-50"
+      style="max-width: 400px; display: none"
+    >
+      <button
+        class="absolute top-3 right-3 text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-300"
+        onclick="closePopup()"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6"
+          />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 6l12 12"
+          />
+        </svg>
+      </button>
+      <div class="flex items-center mb-4">
+        <img
+          src="https://th.bing.com/th/id/R.856125c6aca3db8a02f309f4eb9fe9ad?rik=YhEI4FnHZJbfJw&riu=http%3a%2f%2fassets.stickpng.com%2fthumbs%2f5842a8fba6515b1e0ad75b03.png&ehk=rRMAIHTvtZrw%2bnhc892BXLEPZ5%2fU7zMg6qHMWdM%2bBFY%3d&risl=&pid=ImgRaw&r=0"
+          alt="Telegram Logo"
+          class="w-10 h-10 rounded-full mr-4"
+        />
+        <h2 class="text-lg font-bold text-gray-800">
+          Join Our Telegram Channel
+        </h2>
+      </div>
+      <p class="text-gray-600 mb-4">
+        Stay updated with the latest news and updates from our website!
+      </p>
+      <a
+        href="https://t.me/+_gMhdEhnQwAzNzRl"
+        target="_blank"
+        class="inline-block px-6 py-3 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out bg-blue-600 hover:bg-blue-700 focus:bg-blue-700"
+        >Join Now</a
+      >
+    </div>
+
+    {% comment %} <script>
+
+      // Function to show the popup
+      function showPopup() {
+        document.getElementById("telegramPopup").style.display = "block";
+      }
+
+      // Function to close the popup
+      function closePopup() {
+        document.getElementById("telegramPopup").style.display = "none";
+      }
+
+      // Show the popup after a short delay (adjust the delay as needed)
+      let popupCount = 0;
+      function showPopupWithCount() {
+        if (popupCount < 3) {
+          showPopup();
+          popupCount++;
+        }
+      }
+
+      // Show the popup on page load
+      showPopupWithCount();
+
+      // Add event listener for closing the popup
+      document
+        .getElementById("telegramPopup")
+        .addEventListener("click", (event) => {
+          if (event.target.classList.contains("popup-close")) {
+            closePopup();
+            setTimeout(showPopupWithCount, 2000); // Show again after 3 seconds
+          }
+        });
+    </script> {% endcomment %}
+  </body>
+</html>

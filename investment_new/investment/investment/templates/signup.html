@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   
+    <title>FutureTune | Signup</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .alert-message {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .alert-message.show {
+        opacity: 1;
+      }
+      .alert-message .close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        font-size: 1.2em;
+      }
+      .alert-message .message-content {
+        text-align: center;
+        margin-top: 15px;
+      }
+      #agreementModal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 90%;
+        max-width: 500px;
+        max-height: 80vh;
+        overflow-y: auto;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    {% for message in messages %}
+        <div class="absolute z-[10] text-white text-xl alert alert-{{message.tags}} alert-dismissable fade show" role="alert">
+            <strong>Message:</strong> {{message}}
+        </div>
+    {% endfor %}
+    <div
+      class="min-h-screen flex items-center justify-center bg-zinc-900"
+      id="bg"
+    >
+      
+      <div
+        class="bg-white dark:bg-zinc-800 rounded-lg shadow-lg p-8 w-full max-w-md"
+      >
+        <div class="flex justify-between mb-6"><a href="/">
+          <a href="/">
+          <button
+            id="loginBtn"
+            class="w-1/2 py-2 text-center text-zinc-500 dark:text-zinc-300 font-semibold"
+          >
+            Login</a>
+          </button>
+          <button
+            id="signupBtn"
+            class="w-1/2 py-2 text-center text-green-700 dark:text-green-500 font-semibold border-b-2 border-green-700 dark:border-green-500"
+          >
+            Signup
+          </button>
+        </div>
+        <form method="POST" action="{% url "signup" %}">
+          {% csrf_token %}
+          <div class="mb-4">
+            <label class="block text-zinc-700 dark:text-zinc-300 mb-2"
+              >Mobile number</label
+            >
+            <div
+              class="flex items-center border border-zinc-300 dark:border-zinc-700 rounded-lg overflow-hidden"
+            >
+              <span class="px-3 text-zinc-600 dark:text-zinc-400">+91</span>
+              <input
+                name="phone"
+                type="tel"
+                placeholder="Mobile number"
+                class="w-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-zinc-800 dark:text-zinc-300"
+              />
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-zinc-700 dark:text-zinc-300 mb-2"
+              >Email</label
+            >
+            <div
+              class="flex items-center border border-zinc-300 dark:border-zinc-700 rounded-lg overflow-hidden"
+            >
+              <input
+                name="email"
+                type="text"
+                placeholder="Email"
+                class="w-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-zinc-800 dark:text-zinc-300"
+              />
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-zinc-700 dark:text-zinc-300 mb-2"
+              >Username</label
+            >
+            <div
+              class="flex items-center border border-zinc-300 dark:border-zinc-700 rounded-lg overflow-hidden"
+            >
+              <input
+                name="username"
+                type="text"
+                placeholder="Username"
+                class="w-full px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-zinc-800 dark:text-zinc-300"
+              />
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-zinc-700 dark:text-zinc-300 mb-2"
+              >Password</label
+            >
+            <div class="relative">
+              <input
+                type="password"
+                name="password"
+                placeholder="Login password"
+                class="w-full px-3 py-2 border border-zinc-300 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-zinc-800 dark:text-zinc-300"
+              />
+               <button
+                type="button"
+                id="togglePassword1"
+                class="absolute inset-y-0 right-0 px-3 text-zinc-600 dark:text-zinc-400 focus:outline-none"
+              > 
+                <img
+                  aria-hidden="true"
+                  alt="eye"
+                  src="https://placehold.co/16x16"
+                />
+              </button>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-zinc-700 dark:text-zinc-300 mb-2"
+              >Verify Password</label
+            >
+            <div class="relative">
+              <input
+                type="password"
+                name="confpassword"
+                placeholder="re-enter the same password"
+                class="w-full px-3 py-2 border border-zinc-300 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-zinc-800 dark:text-zinc-300"
+              />
+              <button
+                type="button"
+                id="togglePassword2"
+                class="absolute inset-y-0 right-0 px-3 text-zinc-600 dark:text-zinc-400 focus:outline-none"
+              >
+                <img
+                  aria-hidden="true"
+                  alt="eye"
+                  src="https://placehold.co/16x16"
+                />
+              </button>
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-zinc-700 dark:text-zinc-300 mb-2"
+              >Invitational Code</label
+            >
+            <input
+              type="text"
+              name="invite_code"
+              placeholder="Invitational code"
+              class="w-full px-3 py-2 border border-zinc-300 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-zinc-800 dark:text-zinc-300"
+            />
+          </div>
+
+          <button
+            type="button"
+            id="proceedBtn"
+            class="w-full py-3 bg-green-700 dark:bg-green-500 text-white rounded-lg font-semibold hover:bg-green-800 dark:hover:bg-green-600 text-center"
+          >
+            Proceed
+          </button>
+        </form>
+      </div>
+    </div>
+    <div class="alert-message" id="alertMessage">
+      <span class="close-button" data-close="true">×</span>
+      <div class="message-content"></div>
+    </div>
+
+   
+    <!-- Agreement Modal -->
+    <div id="agreementModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full flex items-center justify-center">
+      <div class="modal-content relative mx-auto p-5 border shadow-lg rounded-md bg-white">
+        <div class="mt-3">
+          <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">Agreement</h3>
+          <div class="mt-2 px-7 py-3">
+            <p class="text-sm text-gray-500">
+              By using this platform, you acknowledge and agree to the following terms:
+              <br><br>
+              This platform involves financial risk, potentially resulting in profit or loss.
+              Due to high traffic, technical issues may occur, causing delays in processing requests.
+              By clicking the agreement button, you accept these terms and conditions.
+              FutureMe is not liable for any losses incurred during your use of the platform.
+              You assume all risks associated with using this service, including potential profits and losses.
+              While we strive to maximize your profits, outcomes are not guaranteed.
+              You are responsible for your own financial decisions and actions on this platform.
+              FutureMe reserves the right to modify or suspend services without prior notice.
+              You agree to use the platform in compliance with all applicable laws and regulations.
+              Any disputes arising from the use of this platform will be resolved according to our dispute resolution policy.
+              <br><br>
+              By clicking "Submit", you agree to our terms and conditions.
+            </p>
+          </div>
+          <div class="mt-4 flex items-center justify-center">
+            <input type="checkbox" id="agreeCheckbox" class="mr-2">
+            <label for="agreeCheckbox" class="text-sm text-gray-700">I agree to the terms and conditions</label>
+          </div>
+          <div class="items-center px-4 py-3 flex justify-center mt-4">
+            <button id="closeModal" class="px-4 py-2 bg-gray-500 text-white text-base font-medium rounded-md w-24 mr-2">
+              Close
+            </button>
+            <button id="submitForm" class="px-4 py-2 bg-green-500 text-white text-base font-medium rounded-md w-24 ml-2" disabled>
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.dots.min.js"></script>
+    <script>
+      VANTA.DOTS({
+        el: "#bg",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: true,
+        minHeight: 100,
+        minWidth: 200.0,
+        scale: 1.0,
+        scaleMobile: 1.0,
+        color: 0x20ffa3,
+        color2: 0x20ffe4,
+        size: 4.7,
+        spacing: 19.0,
+        showLines: true,
+      });
+    </script>
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.querySelector('form');
+      const proceedBtn = document.getElementById('proceedBtn');
+      const modal = document.getElementById('agreementModal');
+      const closeModal = document.getElementById('closeModal');
+      const submitForm = document.getElementById('submitForm');
+      const agreeCheckbox = document.getElementById('agreeCheckbox');
+  
+      proceedBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        modal.style.display = 'flex';
+      });
+  
+      closeModal.addEventListener('click', function() {
+        modal.style.display = 'none';
+      });
+  
+      agreeCheckbox.addEventListener('change', function() {
+        submitForm.disabled = !this.checked;
+      });
+  
+      submitForm.addEventListener('click', function() {
+        if (agreeCheckbox.checked) {
+          modal.style.display = 'none';
+          form.submit();
+        }
+      });
+  
+      // Close the modal if clicked outside of it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = 'none';
+        }
+      }
+    });
+  </script>
+  </body>
+</html>

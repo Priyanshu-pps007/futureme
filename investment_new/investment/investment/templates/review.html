@@ -1,0 +1,326 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 font-sans">
+    <div class="container mx-auto p-4">
+      <div class="flex justify-between items-center mb-4">
+        <a href="#" class="text-white hover:text-gray-200 cursor-pointer">
+          <span class="material-icons">arrow_back</span>
+        </a>
+        <div class="bg-blue-500 text-white text-center py-2 px-4 rounded-lg">
+          <h1 class="text-lg font-semibold">Contact Us</h1>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-md rounded-lg p-4 mb-4">
+        <div class="flex justify-between items-center">
+          <div>
+            <h3 class="font-semibold text-gray-800">For Withdrawl Problem: -</h3>
+            <p class="text-gray-600">Contact @futureme_withdrawl. Make Sure This Channel only deals with withdrawal problems.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-md rounded-lg p-4 mb-4">
+        <div class="flex justify-between items-center">
+          <div>
+            <h3 class="font-semibold text-gray-800">For Deposit Problem:-</h3>
+            <p class="text-gray-600">Contact @futuremeofficial. Make Sure This channel only deals with deposit issues.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-md rounded-lg p-4 mb-4">
+        <div class="flex justify-between items-center">
+          <div>
+            <h3 class="font-semibold text-gray-800">For Any Other Account Support:- </h3>
+            <p class="text-gray-600">
+              Contact @futuremesupport_1. Any other problems except withdrawl and deposits.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="fixed bottom-0 left-0 right-0 bg-zinc-800 p-2 shadow-md flex justify-around"
+      >
+        <a href="{% url "home" %}">
+          <div class="flex flex-col items-center">
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/home.png"
+              alt="Home"
+              class="h-6"
+            />
+            <span class="text-xs text-zinc-300">Home</span>
+          </div>
+        </a>
+        <a href="{% url "invest" %}">
+          <div class="flex flex-col items-center">
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/investment.png"
+              alt="Invest"
+              class="h-6"
+            />
+            <span class="text-xs text-zinc-300">Invest</span>
+          </div>
+        </a>
+        <a href="{% url "review" %}">
+          <div class="flex flex-col items-center">
+            <img
+              src="https://img.icons8.com/?size=100&id=54386&format=png&color=ffffff"
+              alt="Review"
+              class="h-6"
+            />
+            <span class="text-xs text-zinc-300">Support</span>
+          </div>
+        </a>
+        <a href="{% url "account" %}">
+          <div class="flex flex-col items-center">
+            <img
+              src="https://img.icons8.com/ios-filled/50/ffffff/user.png"
+              alt="Account"
+              class="h-6"
+            />
+            <span class="text-xs text-zinc-300">Account</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <div class="container mx-auto p-4">
+      <div class="flex justify-between items-center mb-4">
+        </div>
+    
+      </div> 
+    </div>
+    </button>
+    <div
+      id="reviewPopup"
+      class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded-lg p-6 z-50"
+      style="max-width: 400px; display: none"
+    >
+      <button
+        class="absolute top-3 right-3 text-zinc-600 hover:text-zinc-800 focus:outline-none focus:ring-2 focus:ring-zinc-300"
+        onclick="closeReviewPopup()"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6"
+          ></path>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 6l12 12"
+          ></path>
+        </svg>
+      </button>
+      <h2 class="text-lg font-bold text-zinc-800 mb-4">Add Your Review</h2>
+      <input
+        type="text"
+        placeholder="Your Name"
+        class="w-full bg-zinc-100 border border-zinc-300 rounded-md p-2 mb-2"
+      />
+      <textarea
+        placeholder="Your Review"
+        class="w-full bg-zinc-100 border border-zinc-300 rounded-md p-2 mb-2"
+      ></textarea>
+      <div class="flex items-center mb-4">
+        <span class="text-zinc-600 mr-2">Your Rating:</span>
+        <div class="flex">
+          <button
+            onclick="setRating(1)"
+            class="text-yellow-400 hover:text-yellow-500 focus:outline-none"
+          >
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M10 12.586l-3.293 2.707.793-4.86-3.5-3.4 4.86-.707L10 2.6l2.24 4.527 4.86.707-3.5 3.4.793 4.86z"
+              ></path>
+            </svg>
+          </button>
+          <button
+            onclick="setRating(2)"
+            class="text-yellow-400 hover:text-yellow-500 focus:outline-none"
+          >
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M10 12.586l-3.293 2.707.793-4.86-3.5-3.4 4.86-.707L10 2.6l2.24 4.527 4.86.707-3.5 3.4.793 4.86z"
+              ></path>
+            </svg>
+          </button>
+          <button
+            onclick="setRating(3)"
+            class="text-yellow-400 hover:text-yellow-500 focus:outline-none"
+          >
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M10 12.586l-3.293 2.707.793-4.86-3.5-3.4 4.86-.707L10 2.6l2.24 4.527 4.86.707-3.5 3.4.793 4.86z"
+              ></path>
+            </svg>
+          </button>
+          <button
+            onclick="setRating(4)"
+            class="text-yellow-400 hover:text-yellow-500 focus:outline-none"
+          >
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M10 12.586l-3.293 2.707.793-4.86-3.5-3.4 4.86-.707L10 2.6l2.24 4.527 4.86.707-3.5 3.4.793 4.86z"
+              ></path>
+            </svg>
+          </button>
+          <button
+            onclick="setRating(5)"
+            class="text-yellow-400 hover:text-yellow-500 focus:outline-none"
+          >
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M10 12.586l-3.293 2.707.793-4.86-3.5-3.4 4.86-.707L10 2.6l2.24 4.527 4.86.707-3.5 3.4.793 4.86z"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <button
+        class="w-full bg-blue-500 text-white px-4 py-2 rounded-md shadow-md cursor-pointer hover:bg-blue-600"
+        onclick="submitReview()"
+      >
+        Submit Review
+      </button>
+    </div>
+
+    <!-- Telegram Popup -->
+    <div
+      id="telegramPopup"
+      class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded-lg p-6 z-50"
+      style="max-width: 400px; display: none"
+    >
+      <button
+        class="absolute top-3 right-3 text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-300"
+        onclick="closePopup()"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6"
+          />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 6l12 12"
+          />
+        </svg>
+      </button>
+      <div class="flex items-center mb-4">
+        <img
+          src="https://th.bing.com/th/id/R.856125c6aca3db8a02f309f4eb9fe9ad?rik=YhEI4FnHZJbfJw&riu=http%3a%2f%2fassets.stickpng.com%2fthumbs%2f5842a8fba6515b1e0ad75b03.png&ehk=rRMAIHTvtZrw%2bnhc892BXLEPZ5%2fU7zMg6qHMWdM%2bBFY%3d&risl=&pid=ImgRaw&r=0"
+          alt="Telegram Logo"
+          class="w-10 h-10 rounded-full mr-4"
+        />
+        <h2 class="text-lg font-bold text-gray-800">
+          Join Our Telegram Channel
+        </h2>
+      </div>
+      <p class="text-gray-600 mb-4">
+        Stay updated with the latest news and updates from our website!
+      </p>
+      <a
+        href="https://t.me/+_gMhdEhnQwAzNzRl"
+        target="_blank"
+        class="inline-block px-6 py-3 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out bg-blue-600 hover:bg-blue-700 focus:bg-blue-700"
+        >Join Now</a
+      >
+    </div>
+
+    {% comment %} <script>
+      // Function to show the popup
+      let userRating = 0;
+      // Function to show the review popup
+      function showReviewPopup() {
+        document.getElementById("reviewPopup").style.display = "block";
+      }
+      // Function to close the review popup
+      function closeReviewPopup() {
+        document.getElementById("reviewPopup").style.display = "none";
+      }
+      // Function to set the user's rating
+      function setRating(rating) {
+        userRating = rating;
+        // Add any visual feedback for the selected rating if needed
+      }
+      // Function to submit the review (you can customize this function as needed)
+      function submitReview() {
+        if (userRating === 0) {
+          alert("Please select a rating before submitting your review.");
+        } else {
+          // Add your review submission logic here, including the userRating
+          alert("Review submitted successfully with " + userRating + " stars!");
+          closeReviewPopup();
+        }
+      }
+      function showPopup() {
+        document.getElementById("telegramPopup").style.display = "block";
+      }
+
+      // Function to close the popup
+      function closePopup() {
+        document.getElementById("telegramPopup").style.display = "none";
+      }
+
+      // Show the popup after a short delay (adjust the delay as needed)
+      let popupCount = 0;
+      function showPopupWithCount() {
+        if (popupCount < 3) {
+          showPopup();
+          popupCount++;
+        }
+      }
+
+      // Show the popup on page load
+      showPopupWithCount();
+
+      // Add event listener for closing the popup
+      document
+        .getElementById("telegramPopup")
+        .addEventListener("click", (event) => {
+          if (event.target.classList.contains("popup-close")) {
+            closePopup();
+            setTimeout(showPopupWithCount, 2000); // Show again after 3 seconds
+          }
+        });
+    </script> {% endcomment %}
+  </body>
+</html>

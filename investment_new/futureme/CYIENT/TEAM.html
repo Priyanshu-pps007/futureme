@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .gradient-bg {
+        background: linear-gradient(135deg, #4b5563, #6b7280);
+      }
+      .dark .gradient-bg {
+        background: linear-gradient(135deg, #1f2937, #374151);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div class="min-h-screen gradient-bg p-4">
+      <button
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110 absolute top-4 left-4"
+      >
+        <a href="./home.html">Back</a>
+      </button>
+      <!-- Team Obtain Total Commission Section -->
+      <div class="mt-16 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+        <h1 class="text-2xl font-bold text-blue-500 dark:text-blue-300">
+          Team Obtain Total Commission
+        </h1>
+        <p class="mt-2 text-base text-gray-600 dark:text-gray-400">
+          Obtain Total Commission
+        </p>
+        <p class="text-4xl font-bold text-blue-500 dark:text-blue-300">
+          ₹ 0.00
+        </p>
+      </div>
+      <!-- Slider for Commission Rates -->
+      <div class="mt-8 overflow-x-auto whitespace-nowrap flex space-x-4">
+        <!-- Commission Cards -->
+        <div
+          class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex-shrink-0"
+        >
+          <h1 class="text-xl font-bold text-blue-500 dark:text-blue-300">
+            33 %
+          </h1>
+          <p class="mt-2 text-base text-gray-600 dark:text-gray-400">
+            Commission Rate
+          </p>
+          <p class="text-3xl font-bold text-blue-500 dark:text-blue-300">
+            0 Invite User
+          </p>
+          <p class="text-3xl font-bold text-blue-500 dark:text-blue-300">
+            ₹ 0 Commission
+          </p>
+        </div>
+        <!-- Repeat for other commission rates -->
+        <div
+          class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex-shrink-0"
+        >
+          <h1 class="text-xl font-bold text-blue-500 dark:text-blue-300">
+            20 %
+          </h1>
+          <p class="mt-2 text-base text-gray-600 dark:text-gray-400">
+            Commission Rate
+          </p>
+          <p class="text-3xl font-bold text-blue-500 dark:text-blue-300">
+            0 Invite User
+          </p>
+          <p class="text-3xl font-bold text-blue-500 dark:text-blue-300">
+            ₹ 0 Commission
+          </p>
+        </div>
+        <div
+          class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex-shrink-0"
+        >
+          <h1 class="text-xl font-bold text-blue-500 dark:text-blue-300">
+            10 %
+          </h1>
+          <p class="mt-2 text-base text-gray-600 dark:text-gray-400">
+            Commission Rate
+          </p>
+          <p class="text-3xl font-bold text-blue-500 dark:text-blue-300">
+            0 Invite User
+          </p>
+          <p class="text-3xl font-bold text-blue-500 dark:text-blue-300">
+            ₹ 0 Commission
+          </p>
+        </div>
+      </div>
+      <!-- Level 1 Teams Section -->
+      <div class="mt-8 p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+        <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
+          Level 1 Teams
+        </h2>
+        <div class="mt-4 flex justify-center items-center">
+          <img
+            src="https://placehold.co/100x100"
+            alt="no data"
+            class="w-24 h-24"
+          />
+          <p class="text-base text-gray-500 dark:text-gray-400 ml-4">No data</p>
+        </div>
+      </div>
+    </div>
+    <!-- Telegram Popup -->
+    <div
+      id="telegramPopup"
+      class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white shadow-lg rounded-lg p-6 z-50"
+      style="max-width: 400px; display: none"
+    >
+      <button
+        class="absolute top-3 right-3 text-gray-600 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-300"
+        onclick="closePopup()"
+      >
+        <svg
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6"
+          />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 6l12 12"
+          />
+        </svg>
+      </button>
+      <div class="flex items-center mb-4">
+        <img
+          src="https://th.bing.com/th/id/R.856125c6aca3db8a02f309f4eb9fe9ad?rik=YhEI4FnHZJbfJw&riu=http%3a%2f%2fassets.stickpng.com%2fthumbs%2f5842a8fba6515b1e0ad75b03.png&ehk=rRMAIHTvtZrw%2bnhc892BXLEPZ5%2fU7zMg6qHMWdM%2bBFY%3d&risl=&pid=ImgRaw&r=0"
+          alt="Telegram Logo"
+          class="w-10 h-10 rounded-full mr-4"
+        />
+        <h2 class="text-lg font-bold text-gray-800">
+          Join Our Telegram Channel
+        </h2>
+      </div>
+      <p class="text-gray-600 mb-4">
+        Stay updated with the latest news and updates from our website!
+      </p>
+      <a
+        href="https://t.me/+_gMhdEhnQwAzNzRl"
+        target="_blank"
+        class="inline-block px-6 py-3 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out bg-blue-600 hover:bg-blue-700 focus:bg-blue-700"
+        >Join Now</a
+      >
+    </div>
+
+    <script>
+      // Function to show the popup
+      function showPopup() {
+        document.getElementById("telegramPopup").style.display = "block";
+      }
+
+      // Function to close the popup
+      function closePopup() {
+        document.getElementById("telegramPopup").style.display = "none";
+      }
+
+      // Show the popup after a short delay (adjust the delay as needed)
+      let popupCount = 0;
+      function showPopupWithCount() {
+        if (popupCount < 3) {
+          showPopup();
+          popupCount++;
+        }
+      }
+
+      // Show the popup on page load
+      showPopupWithCount();
+
+      // Add event listener for closing the popup
+      document
+        .getElementById("telegramPopup")
+        .addEventListener("click", (event) => {
+          if (event.target.classList.contains("popup-close")) {
+            closePopup();
+            setTimeout(showPopupWithCount, 2000); // Show again after 3 seconds
+          }
+        });
+    </script>
+  </body>
+</html>
